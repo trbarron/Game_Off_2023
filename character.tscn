@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://doh0w0if3r85g"]
+
+[ext_resource type="Script" path="res://character_new.gd" id="1_7egtf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nb61p"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vwcsn"]
+
+[node name="character" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_7egtf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_nb61p")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+snap = 0.055217
+mesh = SubResource("SphereMesh_vwcsn")
+
+[node name="StopToStartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartToStopTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="StopToStartTimer" to="." method="_on_stop_to_start_timer_timeout"]
+[connection signal="timeout" from="StartToStopTimer" to="." method="_on_start_to_stop_timer_timeout"]
