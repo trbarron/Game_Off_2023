@@ -12,16 +12,23 @@ var savedVelocity = Vector3.ZERO
 
 var timeActive = false
 var timeActiveOS = false
+var turns = 0
 
+var isInactive = false
 
 @onready var dirArrow = $directionArrow
 @onready var velArrow = $velocityArrow
-@onready var cameraNode = get_node("/root/World/character/Camera3D")
+@onready var cameraNode = get_node("/root/1-1/character/Camera3D")
+@onready var turnLabel = get_node("/root/1-1/TimerLabel/SubViewportContainer/SubViewport/Timer")
 @onready var stopToStartTimer = $StopToStartTimer
 @onready var startToStopTimer = $StartToStopTimer
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	var deathArea = get_node("/root/1-1/DeathArea")
+	deathArea.connect("character_died", Callable(self, "_on_character_died"))
+	updateVelocityArrowDirection()
+
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -48,9 +55,11 @@ func stopTime():
 	timeActive = false
 	savedVelocity = velocity
 	velocity = Vector3.ZERO
+	turns += 1
 
 	velArrow.visible = true  # Make velocity arrow visible
 	updateVelocityArrowDirection()  # Update the arrow to point in the direction of savedVelocity
+	updateTurnDisplay()
 
 	stopToStartTimer.start()
 
@@ -66,17 +75,17 @@ func startTime():
 
 
 func updateVelocityArrowDirection():
-	if savedVelocity.length() > 0:
+	if savedVelocity.length() == 0 or savedVelocity.length() > 8:
+		velArrow.scale = Vector3(0,0,0)
+	else:
 		var direction = savedVelocity.normalized()
 		# Rotate the direction by 90 degrees around the Y-axis
 		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(90))
 		velArrow.look_at(global_transform.origin + direction, Vector3.UP)
 		
 		# Scale the arrow proportionally to the velocity magnitude
-		print(savedVelocity.length() / MAX_SPEED)
 		var scale_factor = savedVelocity.length() / VEL_VECTOR_SCALAR
 		velArrow.scale = Vector3(scale_factor, scale_factor, scale_factor)
-
 
 # This function is now separated from the input event
 func follow_cursor(mousePos):
@@ -115,8 +124,17 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _on_stop_to_start_timer_timeout():
-	print("timeActive is now:", timeActive)
+	pass
 
 func _on_start_to_stop_timer_timeout():
-	print("timeActive is now:", timeActive)
 	stopTime()
+
+func _on_character_died():
+	print("_on_char_died")
+	dirArrow.visible = false
+	velArrow.visible = false
+	
+func updateTurnDisplay():
+	turnLabel.text = "Turns: " + str(turns)
+	
+

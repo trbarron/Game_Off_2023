@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://dthnxlvp0igw"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_40osy"]
+[ext_resource type="PackedScene" uid="uid://b8pfl3bu7f5go" path="res://assets/halfpipe.blend" id="2_xqqtb"]
+[ext_resource type="PackedScene" uid="uid://c0n5inifokeg2" path="res://assets/turn.blend" id="3_rb5t1"]
+[ext_resource type="Script" path="res://GoalArea3D.gd" id="4_un0vd"]
+[ext_resource type="PackedScene" uid="uid://ct8u1exlme44t" path="res://assets/goal.blend" id="5_qnsud"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xol22"]
+light_mode = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8eke1"]
+viewport_path = NodePath("But11/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s6bqy"]
+size = Vector3(9.04488, 13.9638, 0.475785)
+
+[sub_resource type="Environment" id="Environment_y48en"]
+background_mode = 2
+background_color = Color(0.411765, 0.756863, 0.909804, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 465.0
+offset_bottom = 295.0
+script = ExtResource("1_40osy")
+
+[node name="But11" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_xol22")
+layout_mode = 0
+offset_left = 2.0
+offset_top = 17.0
+offset_right = 1188.0
+offset_bottom = 305.0
+text = "1-1"
+
+[node name="TextureRect" type="TextureRect" parent="But11"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -115.0
+offset_right = 537.0
+offset_bottom = 397.0
+texture = SubResource("ViewportTexture_8eke1")
+stretch_mode = 3
+
+[node name="SubViewport" type="SubViewport" parent="But11"]
+msaa_2d = 1
+msaa_3d = 1
+debug_draw = 1
+size = Vector2i(512, 200)
+
+[node name="Camera3D" type="Camera3D" parent="But11/SubViewport"]
+transform = Transform3D(0.866025, -0.321394, 0.383022, 0, 0.766044, 0.642788, -0.5, -0.55667, 0.663414, 1.17221, 14, 10.1973)
+fov = 106.0
+
+[node name="ButQuit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 893.0
+offset_right = 1196.0
+offset_bottom = 1181.0
+text = "Quit"
+
+[node name="Stage" type="Node" parent="."]
+
+[node name="halfpipe2" parent="Stage" instance=ExtResource("2_xqqtb")]
+transform = Transform3D(1.91069e-15, -4.37114e-07, -4, -1, -4.37114e-07, 0, -4.37114e-08, 10, -1.74846e-07, -22.5491, 2, -13.6588)
+
+[node name="turn" parent="Stage" instance=ExtResource("3_rb5t1")]
+transform = Transform3D(-4.37114e-08, 4, 0, -1, -1.74846e-07, 0, 0, 0, 4, -22.5129, 2, 0)
+
+[node name="halfpipe" parent="Stage" instance=ExtResource("2_xqqtb")]
+transform = Transform3D(-4.37114e-08, 11, 0, -1, -4.80825e-07, 0, 0, 0, 4, -8.05432, 2, 0)
+
+[node name="GoalArea3D" type="Area3D" parent="Stage"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22.5353, 0, -23.7031)
+script = ExtResource("4_un0vd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/GoalArea3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_s6bqy")
+
+[node name="goal" parent="Stage/GoalArea3D" instance=ExtResource("5_qnsud")]
+transform = Transform3D(-0.0599909, 0, 0.0261785, 0, 0.865, 0, -0.00104714, 0, -1.49977, 0.0262655, 2.44965, 0.136439)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y48en")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -56.3471, 36.8026, 0)
+shadow_enabled = true

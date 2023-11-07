@@ -8,7 +8,7 @@ var rotationSpeed: float = 90.0  # Degrees per second
 var lerpSpeed: float = 4.0  # Control how fast the camera moves to the new position
 
 func _ready():
-	target = get_node("/root/World/character")  # Adjust the path as necessary
+	target = get_node("/root/1-1/character")  # Adjust the path as necessary
 
 func _process(delta: float) -> void:
 	if target:
