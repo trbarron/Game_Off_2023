@@ -4,9 +4,12 @@ export.cfg
 export_presets.cfg
 
 # Godot user settings
-*.godot
+.godot/*/*
 editor_settings-*.tres
+*.cfg
+*.bin
 
+/export
 
 *.tmp
 *.blend1
