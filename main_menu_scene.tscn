@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://dthnxlvp0igw"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_40osy"]
-[ext_resource type="PackedScene" uid="uid://buagpgbyak1hq" path="res://assets/halfpipe.blend" id="2_xqqtb"]
-[ext_resource type="PackedScene" uid="uid://68nkbuvok182" path="res://assets/turn.blend" id="3_rb5t1"]
+[ext_resource type="PackedScene" uid="uid://b8pfl3bu7f5go" path="res://assets/halfpipe.blend" id="2_xqqtb"]
+[ext_resource type="PackedScene" uid="uid://c0n5inifokeg2" path="res://assets/turn.blend" id="3_rb5t1"]
 [ext_resource type="Script" path="res://GoalArea3D.gd" id="4_un0vd"]
-[ext_resource type="PackedScene" uid="uid://c24w6p8u0sfyo" path="res://assets/goal.blend" id="5_qnsud"]
+[ext_resource type="PackedScene" uid="uid://ct8u1exlme44t" path="res://assets/goal.blend" id="5_qnsud"]
 [ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="6_gvmlh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xol22"]
@@ -15,46 +15,45 @@ size = Vector3(9.04488, 13.9638, 0.475785)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cpoyx"]
 shader = ExtResource("6_gvmlh")
-shader_parameter/offset_horizon = 0.236
-shader_parameter/horizon_intensity = -0.443
-shader_parameter/sun_set = Color(0.56, 0.24, 0, 1)
-shader_parameter/horizon_color_day = Color(0.57, 0.53, 0.26, 1)
-shader_parameter/horizon_color_night = Color(0.09, 0.16, 0.04, 1)
-shader_parameter/sun_color = Color(1, 1, 1, 1)
-shader_parameter/sun_radius = 0.2
-shader_parameter/flat_sun = true
-shader_parameter/moon_color = Color(1, 1, 1, 1)
-shader_parameter/moon_radius = 0.05
-shader_parameter/moon_crescent = -0.024
-shader_parameter/dark_falloff = 3.915
-shader_parameter/enable_horizon_fade = true
-shader_parameter/horizon_fade_size = 0.2
-shader_parameter/horizon_fade_blend = 0.1
-shader_parameter/day_bottom_color = Color(0.4, 1, 1, 1)
-shader_parameter/day_top_color = Color(0, 0.8, 1, 1)
-shader_parameter/night_bottom_color = Color(0, 0, 0.2, 1)
-shader_parameter/night_top_color = Color(0, 0, 0, 1)
-shader_parameter/stars_speed = 0.2
-shader_parameter/stars_cutoff = 0.702
-shader_parameter/stars_sky_color = Color(0, 0.11, 0.05, 1)
-shader_parameter/offset_stars = 0.083
-shader_parameter/stars_intensity = 0.0
-shader_parameter/star_falloff = 1.79
-shader_parameter/stars_fade_modulation = 0.91
-shader_parameter/cloud_edge_day_color = Color(0.9, 0.9, 0.9, 1)
-shader_parameter/cloud_main_day_color = Color(1, 1, 1, 1)
-shader_parameter/cloud_edge_night_color = Color(0.15, 0.19, 0.25, 1)
-shader_parameter/cloud_main_night_color = Color(0.15, 0.16, 0.2, 1)
-shader_parameter/cloud_speed_1 = 0.01
-shader_parameter/cloud_speed_2 = 0.02
-shader_parameter/cloud_speed_3 = 0.02
-shader_parameter/cloud_scale_1 = 0.425
-shader_parameter/cloud_scale_2 = 0.074
-shader_parameter/cloud_scale_3 = 0.075
-shader_parameter/cloud_distortion = 1.95
-shader_parameter/cloud_strength = 1.0
-shader_parameter/cloud_cutoff = 0.013
-shader_parameter/cloud_fuzziness = 0.261
+shader_parameter/offsetHorizon = 0.236
+shader_parameter/horizonIntensity = -0.443
+shader_parameter/sunSetColor = Color(0.56, 0.24, 0, 1)
+shader_parameter/horizonColorDay = Color(0.57, 0.53, 0.26, 1)
+shader_parameter/horizonColorNight = Color(0.09, 0.16, 0.04, 1)
+shader_parameter/sunColor = Color(1, 1, 1, 1)
+shader_parameter/sunRadius = 0.2
+shader_parameter/flatSun = true
+shader_parameter/moonColor = Color(1, 1, 1, 1)
+shader_parameter/moonRadius = 0.05
+shader_parameter/moonCrescent = -0.024
+shader_parameter/enableHorizonFade = true
+shader_parameter/horizonFadeSize = 0.2
+shader_parameter/horizonFadeBlend = 0.1
+shader_parameter/dayBottomColor = Color(0.4, 1, 1, 1)
+shader_parameter/dayTopColor = Color(0.8, 0.8, 1, 1)
+shader_parameter/nightBottomColor = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/nightTopColor = Color(0, 0, 0, 1)
+shader_parameter/starsSpeed = 0.2
+shader_parameter/starsCutoff = 0.702
+shader_parameter/starsSkyColor = Color(0, 0.11, 0.05, 1)
+shader_parameter/offsetStars = 0.083
+shader_parameter/starsIntensity = -2.829
+shader_parameter/starFalloff = 1.79
+shader_parameter/starsFadeModulation = 0.91
+shader_parameter/cloudEdgeDayColor = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/cloudMainDayColor = Color(1, 1, 1, 1)
+shader_parameter/cloudEdgeNightColor = Color(0.65, 0.79, 0.25, 1)
+shader_parameter/cloudMainNightColor = Color(0.75, 0.76, 0.2, 1)
+shader_parameter/cloudSpeed1 = 0.01
+shader_parameter/cloudSpeed2 = 0.02
+shader_parameter/cloudSpeed3 = 0.02
+shader_parameter/cloudScale1 = 0.425
+shader_parameter/cloudScale2 = 0.074
+shader_parameter/cloudScale3 = 0.075
+shader_parameter/cloudDistortion = 1.95
+shader_parameter/cloudStrength = 1.0
+shader_parameter/cloudCutoff = 0.013
+shader_parameter/cloudIntensity = -0.009
 
 [sub_resource type="Sky" id="Sky_iqh0k"]
 sky_material = SubResource("ShaderMaterial_cpoyx")
@@ -80,31 +79,33 @@ layout_mode = 0
 offset_left = 50.0
 offset_top = 20.0
 offset_right = 1150.0
-offset_bottom = 320.0
+offset_bottom = 120.0
 text = "1-1"
 
 [node name="But12" type="Button" parent="."]
 material = SubResource("CanvasItemMaterial_xol22")
-offset_left = 50.0
-offset_top = 360.0
-offset_right = 1150.0
-offset_bottom = 660.0
+layout_mode = 0
+offset_left = 29.0
+offset_top = 152.0
+offset_right = 1129.0
+offset_bottom = 252.0
 text = "1-2"
 
 [node name="But13" type="Button" parent="."]
 material = SubResource("CanvasItemMaterial_xol22")
-offset_left = 50.0
-offset_top = 700.0
-offset_right = 1150.0
-offset_bottom = 1000.0
+layout_mode = 0
+offset_left = 35.0
+offset_top = 277.0
+offset_right = 1135.0
+offset_bottom = 377.0
 text = "1-3"
 
 [node name="ButQuit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 1050.0
-offset_right = 1150.0
-offset_bottom = 1150.0
+offset_left = 20.0
+offset_top = 433.0
+offset_right = 1120.0
+offset_bottom = 533.0
 text = "Quit"
 
 [node name="Stage" type="Node" parent="."]

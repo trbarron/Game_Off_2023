@@ -1,24 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://ck4i8kpv510ck"]
+[gd_scene load_steps=22 format=3 uid="uid://ck4i8kpv510ck"]
 
 [ext_resource type="Script" path="res://InLevelMenu.gd" id="1_xlyaw"]
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="2_wdqh7"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="3_884al"]
-[ext_resource type="PackedScene" uid="uid://dqt2gy3ohhxao" path="res://assets/cylinder.blend" id="4_08yab"]
-[ext_resource type="PackedScene" uid="uid://buagpgbyak1hq" path="res://assets/halfpipe.blend" id="4_m7m16"]
+[ext_resource type="PackedScene" uid="uid://bmxdpgk6rov0v" path="res://assets/cylinder.blend" id="4_08yab"]
+[ext_resource type="PackedScene" uid="uid://b8pfl3bu7f5go" path="res://assets/halfpipe.blend" id="4_m7m16"]
 [ext_resource type="Script" path="res://TimerLabel.gd" id="6_xnrp8"]
 [ext_resource type="Script" path="res://Timer.gd" id="7_lutal"]
 [ext_resource type="Script" path="res://GoalArea3D.gd" id="8_r123h"]
-[ext_resource type="PackedScene" uid="uid://c24w6p8u0sfyo" path="res://assets/goal.blend" id="9_7f5tx"]
+[ext_resource type="PackedScene" uid="uid://ct8u1exlme44t" path="res://assets/goal.blend" id="9_7f5tx"]
 [ext_resource type="Script" path="res://DeathArea.gd" id="10_axu4s"]
 [ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="11_5frbk"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cx5yf"]
-light_mode = 1
-
-[sub_resource type="LabelSettings" id="LabelSettings_eat8c"]
-font_size = 50
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0l212"]
 
@@ -29,51 +21,55 @@ height = 4.649
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8m3gt"]
 albedo_color = Color(0, 0.470588, 0.470588, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_eat8c"]
+font_size = 50
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2o2ka"]
 size = Vector3(199, 100, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ux5bg"]
 shader = ExtResource("11_5frbk")
-shader_parameter/offset_horizon = 0.236
-shader_parameter/horizon_intensity = -0.443
-shader_parameter/sun_set = Color(0.56, 0.24, 0, 1)
-shader_parameter/horizon_color_day = Color(0.57, 0.53, 0.26, 1)
-shader_parameter/horizon_color_night = Color(0.09, 0.16, 0.04, 1)
-shader_parameter/sun_color = Color(1, 1, 1, 1)
-shader_parameter/sun_radius = 0.2
-shader_parameter/flat_sun = true
-shader_parameter/moon_color = Color(1, 1, 1, 1)
-shader_parameter/moon_radius = 0.05
-shader_parameter/moon_crescent = -0.024
-shader_parameter/dark_falloff = 3.915
-shader_parameter/enable_horizon_fade = true
-shader_parameter/horizon_fade_size = 0.2
-shader_parameter/horizon_fade_blend = 0.1
-shader_parameter/day_bottom_color = Color(0.4, 1, 1, 1)
-shader_parameter/day_top_color = Color(0, 0.8, 1, 1)
-shader_parameter/night_bottom_color = Color(0, 0, 0.2, 1)
-shader_parameter/night_top_color = Color(0, 0, 0, 1)
-shader_parameter/stars_speed = 0.2
-shader_parameter/stars_cutoff = 0.702
-shader_parameter/stars_sky_color = Color(0, 0.11, 0.05, 1)
-shader_parameter/offset_stars = 0.083
-shader_parameter/stars_intensity = 0.5
-shader_parameter/star_falloff = 1.79
-shader_parameter/stars_fade_modulation = 0.91
-shader_parameter/cloud_edge_day_color = Color(0.9, 0.9, 0.9, 1)
-shader_parameter/cloud_main_day_color = Color(1, 1, 1, 1)
-shader_parameter/cloud_edge_night_color = Color(0.15, 0.19, 0.25, 1)
-shader_parameter/cloud_main_night_color = Color(0.15, 0.16, 0.2, 1)
-shader_parameter/cloud_speed_1 = 0.01
-shader_parameter/cloud_speed_2 = 0.02
-shader_parameter/cloud_speed_3 = 0.02
-shader_parameter/cloud_scale_1 = 0.425
-shader_parameter/cloud_scale_2 = 0.074
-shader_parameter/cloud_scale_3 = 0.075
-shader_parameter/cloud_distortion = 1.95
-shader_parameter/cloud_strength = 1.0
-shader_parameter/cloud_cutoff = 0.013
-shader_parameter/cloud_fuzziness = 0.261
+shader_parameter/offsetHorizon = 0.236
+shader_parameter/horizonIntensity = -0.443
+shader_parameter/sunSetColor = Color(0.56, 0.24, 0, 1)
+shader_parameter/horizonColorDay = Color(0.57, 0.53, 0.26, 1)
+shader_parameter/horizonColorNight = Color(0.09, 0.16, 0.04, 1)
+shader_parameter/sunColor = Color(1, 1, 1, 1)
+shader_parameter/sunRadius = 0.2
+shader_parameter/flatSun = true
+shader_parameter/moonColor = Color(1, 1, 1, 1)
+shader_parameter/moonRadius = 0.05
+shader_parameter/moonCrescent = -0.024
+shader_parameter/enableHorizonFade = true
+shader_parameter/horizonFadeSize = 0.2
+shader_parameter/horizonFadeBlend = 0.1
+shader_parameter/dayBottomColor = Color(0.4, 1, 1, 1)
+shader_parameter/dayTopColor = Color(0.8, 0.8, 1, 1)
+shader_parameter/nightBottomColor = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/nightTopColor = Color(0, 0, 0, 1)
+shader_parameter/starsSpeed = 0.2
+shader_parameter/starsCutoff = 0.702
+shader_parameter/starsSkyColor = Color(0, 0.11, 0.05, 1)
+shader_parameter/offsetStars = 0.083
+shader_parameter/starsIntensity = -2.829
+shader_parameter/starFalloff = 1.79
+shader_parameter/starsFadeModulation = 0.91
+shader_parameter/cloudEdgeDayColor = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/cloudMainDayColor = Color(1, 1, 1, 1)
+shader_parameter/cloudEdgeNightColor = Color(0.65, 0.79, 0.25, 1)
+shader_parameter/cloudMainNightColor = Color(0.75, 0.76, 0.2, 1)
+shader_parameter/cloudSpeed1 = 0.01
+shader_parameter/cloudSpeed2 = 0.02
+shader_parameter/cloudSpeed3 = 0.02
+shader_parameter/cloudScale1 = 0.425
+shader_parameter/cloudScale2 = 0.074
+shader_parameter/cloudScale3 = 0.075
+shader_parameter/cloudDistortion = 1.95
+shader_parameter/cloudStrength = 1.0
+shader_parameter/cloudCutoff = 0.013
+shader_parameter/cloudIntensity = -0.009
 
 [sub_resource type="Sky" id="Sky_2humf"]
 sky_material = SubResource("ShaderMaterial_ux5bg")
@@ -87,57 +83,15 @@ ambient_light_source = 3
 ambient_light_color = Color(0.788235, 0, 0, 1)
 ambient_light_sky_contribution = 0.84
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_setrp"]
+light_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_plyvx"]
+font_size = 50
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="1-2" type="Node3D"]
-
-[node name="InLevelMenu" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchor_right = 0.407
-anchor_bottom = 0.322
-offset_right = 967.6
-offset_bottom = 817.6
-script = ExtResource("1_xlyaw")
-
-[node name="ButMainMenu" type="Button" parent="InLevelMenu"]
-material = SubResource("CanvasItemMaterial_cx5yf")
-layout_mode = 2
-offset_left = 209.0
-offset_top = 702.0
-offset_right = 993.0
-offset_bottom = 928.0
-text = "Main Menu"
-
-[node name="ButRestart" type="Button" parent="InLevelMenu"]
-material = SubResource("CanvasItemMaterial_cx5yf")
-layout_mode = 2
-offset_left = 203.0
-offset_top = 404.0
-offset_right = 987.0
-offset_bottom = 630.0
-text = "Restart"
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="InLevelMenu"]
-show_behind_parent = true
-light_mask = 5
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -256.0
-offset_right = 256.0
-offset_bottom = 512.0
-grow_horizontal = 2
-
-[node name="SubViewport" type="SubViewport" parent="InLevelMenu/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 0
-
-[node name="InLevelMenu" type="Label" parent="InLevelMenu/SubViewportContainer/SubViewport"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "You died!"
-label_settings = SubResource("LabelSettings_eat8c")
 
 [node name="character" parent="." instance=ExtResource("2_wdqh7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.5, 0)
@@ -190,12 +144,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 2, -2.5)
 
 [node name="TimerLabel" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
+anchors_preset = 0
+offset_top = 288.0
+offset_bottom = 651.0
 script = ExtResource("6_xnrp8")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="TimerLabel"]
@@ -205,14 +156,17 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -512.0
-offset_right = 512.0
+offset_left = 4.0
+offset_top = -644.0
+offset_right = 214.0
+offset_bottom = -544.0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="TimerLabel/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(512, 100)
+size = Vector2i(210, 100)
 render_target_update_mode = 4
 
 [node name="Timer" type="Label" parent="TimerLabel/SubViewportContainer/SubViewport"]
@@ -245,5 +199,57 @@ shape = SubResource("BoxShape3D_2o2ka")
 environment = SubResource("Environment_3bo7g")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -56.3471, 36.8026, 0)
+transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 6.99746, 36.8026, 0)
 shadow_enabled = true
+
+[node name="InLevelMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_right = 0.407
+anchor_bottom = 0.322
+offset_right = 967.6
+offset_bottom = 817.6
+script = ExtResource("1_xlyaw")
+
+[node name="ButMainMenu" type="Button" parent="InLevelMenu"]
+material = SubResource("CanvasItemMaterial_setrp")
+layout_mode = 2
+offset_left = 209.0
+offset_top = 349.0
+offset_right = 993.0
+offset_bottom = 575.0
+text = "Main Menu"
+
+[node name="ButRestart" type="Button" parent="InLevelMenu"]
+material = SubResource("CanvasItemMaterial_setrp")
+layout_mode = 2
+offset_left = 203.0
+offset_top = 90.0
+offset_right = 987.0
+offset_bottom = 316.0
+text = "Restart"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InLevelMenu"]
+show_behind_parent = true
+light_mask = 5
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.232
+offset_top = 8.0
+offset_right = 255.768
+offset_bottom = 520.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="InLevelMenu/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="InLevelMenu" type="Label" parent="InLevelMenu/SubViewportContainer/SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "You died!"
+label_settings = SubResource("LabelSettings_plyvx")

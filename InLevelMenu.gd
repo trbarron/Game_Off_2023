@@ -26,3 +26,12 @@ func _on_Restart_pressed():
 	
 func _on_MainMenu_pressed():
 	get_tree().change_scene_to_file("res://main_menu_scene.tscn")
+
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			inLevelMenu.text = "Pause"
+			if !self.is_visible():
+				show()
+			else:
+				hide()
