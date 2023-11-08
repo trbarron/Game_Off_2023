@@ -1,39 +1,47 @@
-[gd_scene load_steps=21 format=3 uid="uid://td8ncx4e224w"]
+[gd_scene load_steps=24 format=3 uid="uid://clclys4uc2qun"]
 
-[ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="2_7bd7c"]
-[ext_resource type="Script" path="res://Camera3D.gd" id="2_kcstb"]
-[ext_resource type="Script" path="res://Timer.gd" id="3_sff33"]
-[ext_resource type="PackedScene" uid="uid://buagpgbyak1hq" path="res://assets/halfpipe.blend" id="3_uensq"]
-[ext_resource type="PackedScene" uid="uid://68nkbuvok182" path="res://assets/turn.blend" id="4_gfobj"]
-[ext_resource type="Script" path="res://TimerLabel.gd" id="5_koon4"]
-[ext_resource type="Script" path="res://GoalArea3D.gd" id="6_c7ydv"]
-[ext_resource type="PackedScene" uid="uid://c24w6p8u0sfyo" path="res://assets/goal.blend" id="6_wb43l"]
-[ext_resource type="Script" path="res://DeathArea.gd" id="8_ngecs"]
-[ext_resource type="Script" path="res://InLevelMenu.gd" id="10_hi6st"]
-[ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="11_ea7t5"]
+[ext_resource type="Script" path="res://InLevelMenu.gd" id="1_rx8c3"]
+[ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="2_x86my"]
+[ext_resource type="PackedScene" uid="uid://dqt2gy3ohhxao" path="res://assets/cylinder.blend" id="3_ak6jf"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="3_h3076"]
+[ext_resource type="PackedScene" uid="uid://buagpgbyak1hq" path="res://assets/halfpipe.blend" id="4_ymk5r"]
+[ext_resource type="Script" path="res://TimerLabel.gd" id="5_s1df7"]
+[ext_resource type="PackedScene" uid="uid://68nkbuvok182" path="res://assets/turn.blend" id="5_t7unw"]
+[ext_resource type="Script" path="res://Timer.gd" id="6_5585y"]
+[ext_resource type="Script" path="res://GoalArea3D.gd" id="7_uewne"]
+[ext_resource type="PackedScene" uid="uid://c24w6p8u0sfyo" path="res://assets/goal.blend" id="8_dvtxk"]
+[ext_resource type="Script" path="res://DeathArea.gd" id="9_guqog"]
+[ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="10_12q5a"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cx5yf"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ciymy"]
 light_mode = 1
 
-[sub_resource type="LabelSettings" id="LabelSettings_eat8c"]
+[sub_resource type="LabelSettings" id="LabelSettings_rfcpf"]
 font_size = 50
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0l212"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r6im"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_inlkr"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4t1xl"]
 radius = 0.1
 height = 4.649
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8m3gt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuac1"]
 albedo_color = Color(0, 0.470588, 0.470588, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2o2ka"]
-size = Vector3(199, 100, 1)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sapmv"]
+radius = 0.1
+height = 4.649
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ux5bg"]
-shader = ExtResource("11_ea7t5")
+[sub_resource type="BoxShape3D" id="BoxShape3D_ti4u3"]
+size = Vector3(10, 100, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q648c"]
+size = Vector3(1000, 1000, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jn3ji"]
+shader = ExtResource("10_12q5a")
 shader_parameter/offset_horizon = 0.236
 shader_parameter/horizon_intensity = -0.443
 shader_parameter/sun_set = Color(0.56, 0.24, 0, 1)
@@ -76,10 +84,10 @@ shader_parameter/cloud_cutoff = 0.013
 shader_parameter/cloud_fuzziness = 0.261
 
 [sub_resource type="Sky" id="Sky_b4hf1"]
-sky_material = SubResource("ShaderMaterial_ux5bg")
+sky_material = SubResource("ShaderMaterial_jn3ji")
 radiance_size = 2
 
-[sub_resource type="Environment" id="Environment_3bo7g"]
+[sub_resource type="Environment" id="Environment_wclpa"]
 background_mode = 2
 background_color = Color(0.411765, 0.756863, 0.909804, 1)
 sky = SubResource("Sky_b4hf1")
@@ -87,7 +95,7 @@ ambient_light_source = 3
 ambient_light_color = Color(0.788235, 0, 0, 1)
 ambient_light_sky_contribution = 0.84
 
-[node name="1-1" type="Node3D"]
+[node name="1-3" type="Node3D"]
 
 [node name="InLevelMenu" type="Control" parent="."]
 visible = false
@@ -96,10 +104,10 @@ anchor_right = 0.407
 anchor_bottom = 0.322
 offset_right = 967.6
 offset_bottom = 817.6
-script = ExtResource("10_hi6st")
+script = ExtResource("1_rx8c3")
 
 [node name="ButMainMenu" type="Button" parent="InLevelMenu"]
-material = SubResource("CanvasItemMaterial_cx5yf")
+material = SubResource("CanvasItemMaterial_ciymy")
 layout_mode = 2
 offset_left = 209.0
 offset_top = 702.0
@@ -108,7 +116,7 @@ offset_bottom = 928.0
 text = "Main Menu"
 
 [node name="ButRestart" type="Button" parent="InLevelMenu"]
-material = SubResource("CanvasItemMaterial_cx5yf")
+material = SubResource("CanvasItemMaterial_ciymy")
 layout_mode = 2
 offset_left = 203.0
 offset_top = 404.0
@@ -137,9 +145,9 @@ render_target_update_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "You died!"
-label_settings = SubResource("LabelSettings_eat8c")
+label_settings = SubResource("LabelSettings_rfcpf")
 
-[node name="character" parent="." instance=ExtResource("2_7bd7c")]
+[node name="character" parent="." instance=ExtResource("2_x86my")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.5, 0)
 collision_layer = 1
 collision_mask = 1
@@ -148,16 +156,16 @@ collision_mask = 1
 
 [node name="ArrowMesh3d" type="MeshInstance3D" parent="character/directionArrow"]
 transform = Transform3D(-2.18557e-08, -0.5, 2.18557e-08, 0, -2.18557e-08, -0.5, 0.5, -2.18557e-08, 9.55343e-16, 1, 0, 0)
-material_override = SubResource("StandardMaterial3D_0l212")
-mesh = SubResource("CapsuleMesh_inlkr")
+material_override = SubResource("StandardMaterial3D_2r6im")
+mesh = SubResource("CapsuleMesh_4t1xl")
 skeleton = NodePath("../..")
 
 [node name="velocityArrow" type="Node3D" parent="character"]
 
 [node name="ArrowMesh3d" type="MeshInstance3D" parent="character/velocityArrow"]
 transform = Transform3D(-2.18557e-08, -0.5, 0, -2.18557e-08, 9.55343e-16, -0.5, 0.5, -2.18557e-08, -2.18557e-08, 1, 0, 0)
-material_override = SubResource("StandardMaterial3D_8m3gt")
-mesh = SubResource("CapsuleMesh_inlkr")
+material_override = SubResource("StandardMaterial3D_wuac1")
+mesh = SubResource("CapsuleMesh_sapmv")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="character"]
@@ -166,18 +174,30 @@ projection = 1
 fov = 101.3
 size = 35.0
 far = 4263.3
-script = ExtResource("2_kcstb")
+script = ExtResource("3_h3076")
 
 [node name="Stage" type="Node" parent="."]
 
-[node name="halfpipe2" parent="Stage" instance=ExtResource("3_uensq")]
-transform = Transform3D(1.91069e-15, -4.37114e-07, -4, -1, -4.37114e-07, 0, -4.37114e-08, 10, -1.74846e-07, -22.5491, 2, -13.6588)
+[node name="cylinder4" parent="Stage" instance=ExtResource("3_ak6jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8648, 2, -1)
 
-[node name="turn" parent="Stage" instance=ExtResource("4_gfobj")]
-transform = Transform3D(-4.37114e-08, 4, 0, -1, -1.74846e-07, 0, 0, 0, 4, -22.5129, 2, 0)
+[node name="cylinder3" parent="Stage" instance=ExtResource("3_ak6jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 2)
 
-[node name="halfpipe" parent="Stage" instance=ExtResource("3_uensq")]
-transform = Transform3D(-4.37114e-08, 11, 0, -1, -4.80825e-07, 0, 0, 0, 4, -8.05432, 2, 0)
+[node name="cylinder2" parent="Stage" instance=ExtResource("3_ak6jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 0)
+
+[node name="cylinder" parent="Stage" instance=ExtResource("3_ak6jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, -2)
+
+[node name="halfpipe" parent="Stage" instance=ExtResource("4_ymk5r")]
+transform = Transform3D(-4.37114e-08, 14, 0, -1, -6.11959e-07, 0, 0, 0, 4, -12.3154, 2, 0)
+
+[node name="turn3" parent="Stage" instance=ExtResource("5_t7unw")]
+transform = Transform3D(-4.37114e-08, 4, 0, -1, -1.74846e-07, 0, 0, 0, 4, -30.1784, 2, 0)
+
+[node name="turn4" parent="Stage" instance=ExtResource("5_t7unw")]
+transform = Transform3D(-5.21253e-16, 4.76995e-08, -4, -1, -1.74846e-07, 0, -4.37114e-08, 4, 4.76995e-08, -30.1784, 2, -7.87912)
 
 [node name="TimerLabel" type="Control" parent="."]
 layout_mode = 3
@@ -187,7 +207,7 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
-script = ExtResource("5_koon4")
+script = ExtResource("5_s1df7")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="TimerLabel"]
 show_behind_parent = true
@@ -210,30 +230,34 @@ render_target_update_mode = 4
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Turns: 0"
-label_settings = SubResource("LabelSettings_eat8c")
-script = ExtResource("3_sff33")
+label_settings = SubResource("LabelSettings_rfcpf")
+script = ExtResource("6_5585y")
 
 [node name="GoalArea" type="Area3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22.5353, 0, -23.7031)
-script = ExtResource("6_c7ydv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1319, 0, -13.1629)
+script = ExtResource("7_uewne")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalArea"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-shape = SubResource("BoxShape3D_2o2ka")
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0452271, 0, 2.33599)
+shape = SubResource("BoxShape3D_ti4u3")
 
-[node name="goal" parent="GoalArea" instance=ExtResource("6_wb43l")]
-transform = Transform3D(-0.0599909, 0, 0.0261785, 0, 0.865, 0, -0.00104714, 0, -1.49977, 0.0262655, 2.44965, 0.136439)
+[node name="goal" parent="GoalArea" instance=ExtResource("8_dvtxk")]
+transform = Transform3D(-0.0599909, 0, 0.0261785, 0, 0.865, 0, -0.00104714, 0, -1.49977, -0.0502815, 2.44965, 2.75547)
 
 [node name="DeathArea" type="Area3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -2, 0)
-script = ExtResource("8_ngecs")
+script = ExtResource("9_guqog")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -33.0759)
-shape = SubResource("BoxShape3D_2o2ka")
+shape = SubResource("BoxShape3D_ti4u3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -33.076)
+shape = SubResource("BoxShape3D_q648c")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3bo7g")
+environment = SubResource("Environment_wclpa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -56.3471, 36.8026, 0)

@@ -18,14 +18,14 @@ var isInactive = false
 
 @onready var dirArrow = $directionArrow
 @onready var velArrow = $velocityArrow
-@onready var cameraNode = get_node("/root/1-1/character/Camera3D")
-@onready var turnLabel = get_node("/root/1-1/TimerLabel/SubViewportContainer/SubViewport/Timer")
+@onready var cameraNode = get_node("../character/Camera3D")
+@onready var turnLabel = get_node("../TimerLabel/SubViewportContainer/SubViewport/Timer")
 @onready var stopToStartTimer = $StopToStartTimer
 @onready var startToStopTimer = $StartToStopTimer
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	var deathArea = get_node("/root/1-1/DeathArea")
+	var deathArea = get_node("../DeathArea")
 	deathArea.connect("character_died", Callable(self, "_on_character_died"))
 	updateVelocityArrowDirection()
 
@@ -130,7 +130,6 @@ func _on_start_to_stop_timer_timeout():
 	stopTime()
 
 func _on_character_died():
-	print("_on_char_died")
 	dirArrow.visible = false
 	velArrow.visible = false
 	

@@ -7,5 +7,4 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.name == "character":
-		print("Character has diedasdf")
 		emit_signal("character_died")

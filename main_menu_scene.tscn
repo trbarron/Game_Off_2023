@@ -1,17 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dthnxlvp0igw"]
+[gd_scene load_steps=12 format=3 uid="uid://dthnxlvp0igw"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_40osy"]
-[ext_resource type="PackedScene" uid="uid://b8pfl3bu7f5go" path="res://assets/halfpipe.blend" id="2_xqqtb"]
-[ext_resource type="PackedScene" uid="uid://c0n5inifokeg2" path="res://assets/turn.blend" id="3_rb5t1"]
+[ext_resource type="PackedScene" uid="uid://buagpgbyak1hq" path="res://assets/halfpipe.blend" id="2_xqqtb"]
+[ext_resource type="PackedScene" uid="uid://68nkbuvok182" path="res://assets/turn.blend" id="3_rb5t1"]
 [ext_resource type="Script" path="res://GoalArea3D.gd" id="4_un0vd"]
-[ext_resource type="PackedScene" uid="uid://ct8u1exlme44t" path="res://assets/goal.blend" id="5_qnsud"]
+[ext_resource type="PackedScene" uid="uid://c24w6p8u0sfyo" path="res://assets/goal.blend" id="5_qnsud"]
 [ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="6_gvmlh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xol22"]
 light_mode = 1
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_8eke1"]
-viewport_path = NodePath("But11/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s6bqy"]
 size = Vector3(9.04488, 13.9638, 0.475785)
@@ -80,37 +77,34 @@ script = ExtResource("1_40osy")
 [node name="But11" type="Button" parent="."]
 material = SubResource("CanvasItemMaterial_xol22")
 layout_mode = 0
-offset_left = 2.0
-offset_top = 17.0
-offset_right = 1188.0
-offset_bottom = 305.0
+offset_left = 50.0
+offset_top = 20.0
+offset_right = 1150.0
+offset_bottom = 320.0
 text = "1-1"
 
-[node name="TextureRect" type="TextureRect" parent="But11"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = -115.0
-offset_right = 537.0
-offset_bottom = 397.0
-texture = SubResource("ViewportTexture_8eke1")
-stretch_mode = 3
+[node name="But12" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_xol22")
+offset_left = 50.0
+offset_top = 360.0
+offset_right = 1150.0
+offset_bottom = 660.0
+text = "1-2"
 
-[node name="SubViewport" type="SubViewport" parent="But11"]
-msaa_2d = 1
-msaa_3d = 1
-debug_draw = 1
-size = Vector2i(512, 200)
-
-[node name="Camera3D" type="Camera3D" parent="But11/SubViewport"]
-transform = Transform3D(0.866025, -0.321394, 0.383022, 0, 0.766044, 0.642788, -0.5, -0.55667, 0.663414, 1.17221, 14, 10.1973)
-fov = 106.0
+[node name="But13" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_xol22")
+offset_left = 50.0
+offset_top = 700.0
+offset_right = 1150.0
+offset_bottom = 1000.0
+text = "1-3"
 
 [node name="ButQuit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 893.0
-offset_right = 1196.0
-offset_bottom = 1181.0
+offset_left = 50.0
+offset_top = 1050.0
+offset_right = 1150.0
+offset_bottom = 1150.0
 text = "Quit"
 
 [node name="Stage" type="Node" parent="."]

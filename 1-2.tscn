@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://InLevelMenu.gd" id="1_xlyaw"]
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="2_wdqh7"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="3_884al"]
-[ext_resource type="PackedScene" uid="uid://b8pfl3bu7f5go" path="res://assets/halfpipe.blend" id="4_m7m16"]
-[ext_resource type="PackedScene" uid="uid://c0n5inifokeg2" path="res://assets/turn.blend" id="5_ch5t7"]
+[ext_resource type="PackedScene" uid="uid://dqt2gy3ohhxao" path="res://assets/cylinder.blend" id="4_08yab"]
+[ext_resource type="PackedScene" uid="uid://buagpgbyak1hq" path="res://assets/halfpipe.blend" id="4_m7m16"]
 [ext_resource type="Script" path="res://TimerLabel.gd" id="6_xnrp8"]
 [ext_resource type="Script" path="res://Timer.gd" id="7_lutal"]
 [ext_resource type="Script" path="res://GoalArea3D.gd" id="8_r123h"]
-[ext_resource type="PackedScene" uid="uid://ct8u1exlme44t" path="res://assets/goal.blend" id="9_7f5tx"]
+[ext_resource type="PackedScene" uid="uid://c24w6p8u0sfyo" path="res://assets/goal.blend" id="9_7f5tx"]
 [ext_resource type="Script" path="res://DeathArea.gd" id="10_axu4s"]
 [ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="11_5frbk"]
 
@@ -75,14 +75,14 @@ shader_parameter/cloud_strength = 1.0
 shader_parameter/cloud_cutoff = 0.013
 shader_parameter/cloud_fuzziness = 0.261
 
-[sub_resource type="Sky" id="Sky_b4hf1"]
+[sub_resource type="Sky" id="Sky_2humf"]
 sky_material = SubResource("ShaderMaterial_ux5bg")
 radiance_size = 2
 
 [sub_resource type="Environment" id="Environment_3bo7g"]
 background_mode = 2
 background_color = Color(0.411765, 0.756863, 0.909804, 1)
-sky = SubResource("Sky_b4hf1")
+sky = SubResource("Sky_2humf")
 ambient_light_source = 3
 ambient_light_color = Color(0.788235, 0, 0, 1)
 ambient_light_sky_contribution = 0.84
@@ -170,14 +170,23 @@ script = ExtResource("3_884al")
 
 [node name="Stage" type="Node" parent="."]
 
-[node name="halfpipe2" parent="Stage" instance=ExtResource("4_m7m16")]
-transform = Transform3D(1.91069e-15, -4.37114e-07, -4, -1, -4.37114e-07, 0, -4.37114e-08, 10, -1.74846e-07, -22.5491, 2, -13.6588)
+[node name="cylinder4" parent="Stage" instance=ExtResource("4_08yab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 2, 0)
 
-[node name="turn" parent="Stage" instance=ExtResource("5_ch5t7")]
-transform = Transform3D(-4.37114e-08, 4, 0, -1, -1.74846e-07, 0, 0, 0, 4, -22.5129, 2, 0)
+[node name="cylinder3" parent="Stage" instance=ExtResource("4_08yab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 2.5)
+
+[node name="cylinder2" parent="Stage" instance=ExtResource("4_08yab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 0)
+
+[node name="cylinder" parent="Stage" instance=ExtResource("4_08yab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 0)
 
 [node name="halfpipe" parent="Stage" instance=ExtResource("4_m7m16")]
-transform = Transform3D(-4.37114e-08, 11, 0, -1, -4.80825e-07, 0, 0, 0, 4, -8.05432, 2, 0)
+transform = Transform3D(-4.37114e-08, 19, 0, -1, -8.30516e-07, 0, 0, 0, 4, -17.1317, 2, 0)
+
+[node name="cylinder5" parent="Stage" instance=ExtResource("4_08yab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 2, -2.5)
 
 [node name="TimerLabel" type="Control" parent="."]
 layout_mode = 3
@@ -214,15 +223,15 @@ label_settings = SubResource("LabelSettings_eat8c")
 script = ExtResource("7_lutal")
 
 [node name="GoalArea" type="Area3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22.5353, 0, -23.7031)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.11, 0, 0)
 script = ExtResource("8_r123h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalArea"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0452271, 0, 0)
 shape = SubResource("BoxShape3D_2o2ka")
 
 [node name="goal" parent="GoalArea" instance=ExtResource("9_7f5tx")]
-transform = Transform3D(-0.0599909, 0, 0.0261785, 0, 0.865, 0, -0.00104714, 0, -1.49977, 0.0262655, 2.44965, 0.136439)
+transform = Transform3D(-0.0599909, 0, 0.0261785, 0, 0.865, 0, -0.00104714, 0, -1.49977, -0.0502815, 2.44965, 0.136439)
 
 [node name="DeathArea" type="Area3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -2, 0)
