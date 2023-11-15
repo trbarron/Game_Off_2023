@@ -180,31 +180,60 @@ size = 35.0
 far = 4263.3
 script = ExtResource("3_h3076")
 
+[node name="OmniLight3D5" type="OmniLight3D" parent="character"]
+light_color = Color(0.0666667, 0.164706, 1, 1)
+light_energy = 0.382
+light_bake_mode = 0
+shadow_bias = 0.0
+omni_range = 18.593
+
 [node name="Stage" type="Node" parent="."]
 
 [node name="cylinder4" parent="Stage" instance=ExtResource("3_ak6jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8648, 2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.919, 1, 1.144)
 
 [node name="cylinder3" parent="Stage" instance=ExtResource("3_ak6jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 2)
+transform = Transform3D(0.800919, 0, -0.598772, 0, 1, 0, 0.598772, 0, 0.800919, -28.1588, -0.403457, -13.8721)
 
 [node name="cylinder2" parent="Stage" instance=ExtResource("3_ak6jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 0)
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -8.66247, 0.0767193, 0)
 
 [node name="cylinder" parent="Stage" instance=ExtResource("3_ak6jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05448, 2, -2)
 
 [node name="halfpipe" parent="Stage" instance=ExtResource("4_ymk5r")]
-transform = Transform3D(-4.37114e-08, 14, 0, -1, -6.11959e-07, 0, 0, 0, 4, -12.3154, 2, 0)
+transform = Transform3D(-4.37114e-08, 3, 0, -1, -1.31134e-07, 0, 0, 0, 4, -2.32964, 2, 0)
+
+[node name="halfpipe2" parent="Stage" instance=ExtResource("4_ymk5r")]
+transform = Transform3D(-0.0895419, 6.76148, -0.486015, -0.469253, -2.46281e-07, 1.38445, 0.334175, 1.81173, 1.81383, -19.1623, 2.0899, 2.72026)
 
 [node name="turn3" parent="Stage" instance=ExtResource("5_t7unw")]
-transform = Transform3D(-4.37114e-08, 4, 0, -1, -1.74846e-07, 0, 0, 0, 4, -30.1784, 2, 0)
+transform = Transform3D(-6.01403e-08, -1.68179, 6.62472, 2, 2.26494e-07, 6.99382e-07, -2.23056e-07, 2.48427, 4.48477, -20.5207, -1.31775, -5.13995)
 
 [node name="turn4" parent="Stage" instance=ExtResource("5_t7unw")]
-transform = Transform3D(-5.21253e-16, 4.76995e-08, -4, -1, -1.74846e-07, 0, -4.37114e-08, 4, 4.76995e-08, -30.1784, 2, -7.87912)
+transform = Transform3D(-9.02583e-08, 0.278956, 3.99026, 1, 1.74846e-07, 3.49691e-07, -3.75082e-08, 3.99026, -0.278956, -6.83289, -2.29569, -1.12145)
+visible = false
+
+[node name="cylinder5" parent="Stage" instance=ExtResource("3_ak6jf")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -27.1419, -0.17811, -1.61928)
+
+[node name="halfpipe3" parent="Stage" instance=ExtResource("4_ymk5r")]
+transform = Transform3D(-0.474464, -0.324688, -2.5758, -0.643915, 3.30779e-07, 1.90013, -0.0160464, 9.60051, -0.0871132, -31.197, 2.46963, -8.72789)
+
+[node name="cylinder6" parent="Stage" instance=ExtResource("3_ak6jf")]
+transform = Transform3D(2.40276, 0, -1.79632, 0, 1, 0, 1.79632, 0, 2.40276, -26.1667, -0.363704, -10.7286)
+
+[node name="cylinder7" parent="Stage" instance=ExtResource("3_ak6jf")]
+transform = Transform3D(0.800919, 0, -0.598772, 0, 1, 0, 0.598772, 0, 0.800919, -16.757, 1, -4.885)
+
+[node name="cylinder8" parent="Stage" instance=ExtResource("3_ak6jf")]
+transform = Transform3D(0.800919, 0, -0.598772, 0, 1, 0, 0.598772, 0, 0.800919, -17.232, 1, -0.836)
+
+[node name="halfpipe4" parent="Stage" instance=ExtResource("4_ymk5r")]
+transform = Transform3D(-0.136268, 6.7822, -0.189924, -0.253912, -0.206312, 2.09898, 0.506802, 1.72022, 1.00054, -19.503, 3.36857, 3.93036)
 
 [node name="GoalArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1319, 0, -13.1629)
+transform = Transform3D(-0.41153, 0, -0.911396, 0, 1, 0, 0.911396, 0, -0.41153, -24.8143, 2.49593, -16.5406)
 script = ExtResource("7_uewne")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalArea"]
@@ -215,11 +244,11 @@ shape = SubResource("BoxShape3D_ti4u3")
 transform = Transform3D(-0.0599909, 0, 0.0261785, 0, 0.865, 0, -0.00104714, 0, -1.49977, -0.0502815, 2.44965, 2.75547)
 
 [node name="DeathArea" type="Area3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.97642, -2, 0)
 script = ExtResource("9_guqog")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -33.0759)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -1.82099)
 shape = SubResource("BoxShape3D_ti4u3")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="DeathArea"]
@@ -231,7 +260,68 @@ environment = SubResource("Environment_wclpa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -56.3471, 36.8026, 0)
-shadow_enabled = true
+light_energy = 0.102
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.0579299, 0.998321, 0, -0.998321, -0.0579299, 0, 0, 0, 1, -8.088, 11.5473, 9.16717)
+light_color = Color(0.588235, 1, 1, 1)
+light_energy = 16.0
+light_indirect_energy = 12.091
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 20.626
+omni_attenuation = 1.86607
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25195, 1.87075, -19.0806)
+light_energy = 16.0
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 34.712
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25195, 18.143, -8.87825)
+light_color = Color(0.431373, 0.145098, 0.760784, 1)
+light_energy = 4.491
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 34.712
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.4536, 19.3856, -3.56417)
+light_color = Color(0.72549, 0.639216, 1, 1)
+light_energy = 16.0
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 34.712
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5471, -1.93758, -3.56417)
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 1.333
+shadow_normal_bias = 3.561
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5811, 3.57523, 1.17309)
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 1.333
+shadow_normal_bias = 3.561
+omni_attenuation = 1.03527
 
 [node name="TimerLabel" type="Control" parent="."]
 layout_mode = 3

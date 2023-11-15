@@ -32,26 +32,26 @@ size = Vector3(199, 100, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ux5bg"]
 shader = ExtResource("11_5frbk")
 shader_parameter/offsetHorizon = 0.236
-shader_parameter/horizonIntensity = -0.443
+shader_parameter/horizonIntensity = -3.014
 shader_parameter/sunSetColor = Color(0.56, 0.24, 0, 1)
 shader_parameter/horizonColorDay = Color(0.57, 0.53, 0.26, 1)
 shader_parameter/horizonColorNight = Color(0.09, 0.16, 0.04, 1)
 shader_parameter/sunColor = Color(1, 1, 1, 1)
-shader_parameter/sunRadius = 0.2
+shader_parameter/sunRadius = 0.192
 shader_parameter/flatSun = true
-shader_parameter/moonColor = Color(1, 1, 1, 1)
+shader_parameter/moonColor = Color(0.211765, 0.211765, 0.211765, 1)
 shader_parameter/moonRadius = 0.05
 shader_parameter/moonCrescent = -0.024
 shader_parameter/enableHorizonFade = true
-shader_parameter/horizonFadeSize = 0.2
+shader_parameter/horizonFadeSize = 0.8
 shader_parameter/horizonFadeBlend = 0.1
 shader_parameter/dayBottomColor = Color(0.4, 1, 1, 1)
-shader_parameter/dayTopColor = Color(0.8, 0.8, 1, 1)
+shader_parameter/dayTopColor = Color(0.603922, 0.933333, 0, 1)
 shader_parameter/nightBottomColor = Color(0.8, 0.8, 0.8, 1)
-shader_parameter/nightTopColor = Color(0, 0, 0, 1)
+shader_parameter/nightTopColor = Color(0.862745, 0, 0, 1)
 shader_parameter/starsSpeed = 0.2
 shader_parameter/starsCutoff = 0.702
-shader_parameter/starsSkyColor = Color(0, 0.11, 0.05, 1)
+shader_parameter/starsSkyColor = Color(0, 0.521569, 0.309804, 1)
 shader_parameter/offsetStars = 0.083
 shader_parameter/starsIntensity = -2.829
 shader_parameter/starFalloff = 1.79
@@ -73,15 +73,15 @@ shader_parameter/cloudIntensity = -0.009
 
 [sub_resource type="Sky" id="Sky_2humf"]
 sky_material = SubResource("ShaderMaterial_ux5bg")
-radiance_size = 2
 
 [sub_resource type="Environment" id="Environment_3bo7g"]
 background_mode = 2
 background_color = Color(0.411765, 0.756863, 0.909804, 1)
+background_energy_multiplier = 1.66
 sky = SubResource("Sky_2humf")
 ambient_light_source = 3
-ambient_light_color = Color(0.788235, 0, 0, 1)
 ambient_light_sky_contribution = 0.84
+ambient_light_energy = 10.41
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_setrp"]
 light_mode = 1
@@ -198,9 +198,25 @@ shape = SubResource("BoxShape3D_2o2ka")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3bo7g")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 6.99746, 36.8026, 0)
-shadow_enabled = true
+[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6746, 23.4385, 11.665)
+light_energy = 16.0
+light_indirect_energy = 8.091
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 34.712
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1079, 26.0843, 0)
+light_energy = 14.545
+light_indirect_energy = 8.091
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 34.712
+omni_attenuation = 1.03527
 
 [node name="InLevelMenu" type="Control" parent="."]
 visible = false

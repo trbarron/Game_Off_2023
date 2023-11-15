@@ -41,7 +41,7 @@ shader_parameter/enableHorizonFade = true
 shader_parameter/horizonFadeSize = 0.6
 shader_parameter/horizonFadeBlend = 4.1
 shader_parameter/dayBottomColor = Color(0.372549, 0.737255, 0, 1)
-shader_parameter/dayTopColor = Color(0.992157, 0.72549, 0.796078, 1)
+shader_parameter/dayTopColor = Color(0.8, 0.8, 1, 1)
 shader_parameter/nightBottomColor = Color(0.92549, 0.92549, 0.92549, 1)
 shader_parameter/nightTopColor = Color(0, 0, 0, 1)
 shader_parameter/starsSpeed = 0.614
@@ -75,7 +75,6 @@ background_mode = 2
 background_color = Color(0.411765, 0.756863, 0.909804, 1)
 sky = SubResource("Sky_b4hf1")
 ambient_light_source = 3
-ambient_light_color = Color(0.788235, 0, 0, 1)
 ambient_light_sky_contribution = 0.84
 
 [sub_resource type="LabelSettings" id="LabelSettings_nnpxr"]
@@ -157,7 +156,56 @@ environment = SubResource("Environment_3bo7g")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -56.3471, 36.8026, 0)
-shadow_enabled = true
+light_energy = 0.182
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6746, 23.4385, -19.0322)
+light_energy = 16.0
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 34.712
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9807, 12.9212, -2.72584)
+light_color = Color(0.588235, 1, 1, 1)
+light_energy = 16.0
+light_indirect_energy = 12.091
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 20.626
+omni_attenuation = 1.86607
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2519, 7.87075, 11.9194)
+light_energy = 16.0
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 12.139
+omni_attenuation = 1.03527
+
+[node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
+transform = Transform3D(-4.37114e-08, 0.895712, -0.444635, 0, 0.444635, 0.895712, 1, 3.91528e-08, -1.94356e-08, 3.90959, 10, 1.70894e-07)
+projection = 1
+fov = 101.3
+size = 35.0
+far = 4263.3
+script = ExtResource("2_kcstb")
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25195, 18.143, -8.87825)
+light_energy = 4.491
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 30.887
+omni_attenuation = 1.03527
 
 [node name="TimerLabel" type="Control" parent="."]
 layout_mode = 3
