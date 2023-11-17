@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://doh0w0if3r85g"]
+[gd_scene load_steps=7 format=3 uid="uid://doh0w0if3r85g"]
 
 [ext_resource type="Script" path="res://character_new.gd" id="1_7egtf"]
+[ext_resource type="Texture2D" uid="uid://pnftxk6vurcp" path="res://assets/spheroidTexture2.png" id="2_udn21"]
+[ext_resource type="Texture2D" uid="uid://mfcajj5nbnsx" path="res://assets/spheroidNormalMap.png" id="2_wbd2k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nb61p"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_vwcsn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hcor"]
+albedo_texture = ExtResource("2_udn21")
+metallic = 0.37
+roughness = 0.45
+normal_enabled = true
+normal_scale = -0.5
+normal_texture = ExtResource("2_wbd2k")
+clearcoat_roughness = 0.79
+clearcoat_texture = ExtResource("2_wbd2k")
 
 [node name="character" type="CharacterBody3D"]
 collision_layer = 2
@@ -17,6 +29,7 @@ shape = SubResource("SphereShape3D_nb61p")
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 snap = 0.055217
 mesh = SubResource("SphereMesh_vwcsn")
+material = SubResource("StandardMaterial3D_6hcor")
 
 [node name="StopToStartTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -24,6 +37,9 @@ one_shot = true
 
 [node name="StartToStopTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="postScoreHTTPRequest" type="HTTPRequest" parent="."]
+timeout = 10.0
 
 [connection signal="timeout" from="StopToStartTimer" to="." method="_on_stop_to_start_timer_timeout"]
 [connection signal="timeout" from="StartToStopTimer" to="." method="_on_start_to_stop_timer_timeout"]

@@ -1,38 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://cb842yh1xvips"]
+[gd_scene load_steps=19 format=3 uid="uid://cb842yh1xvips"]
 
 [ext_resource type="Script" path="res://InLevelMenu.gd" id="1_rx8c3"]
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="2_x86my"]
 [ext_resource type="PackedScene" uid="uid://bmxdpgk6rov0v" path="res://assets/cylinder.blend" id="3_ak6jf"]
+[ext_resource type="Script" path="res://FPSLabel.gd" id="3_bjg5x"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="3_h3076"]
 [ext_resource type="PackedScene" uid="uid://b8pfl3bu7f5go" path="res://assets/halfpipe.blend" id="4_ymk5r"]
-[ext_resource type="Script" path="res://TimerLabel.gd" id="5_s1df7"]
 [ext_resource type="PackedScene" uid="uid://c0n5inifokeg2" path="res://assets/turn.blend" id="5_t7unw"]
-[ext_resource type="Script" path="res://Timer.gd" id="6_5585y"]
 [ext_resource type="Script" path="res://GoalArea3D.gd" id="7_uewne"]
 [ext_resource type="PackedScene" uid="uid://ct8u1exlme44t" path="res://assets/goal.blend" id="8_dvtxk"]
 [ext_resource type="Script" path="res://DeathArea.gd" id="9_guqog"]
 [ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="10_12q5a"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ciymy"]
-light_mode = 1
-
-[sub_resource type="LabelSettings" id="LabelSettings_rfcpf"]
-font_size = 50
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r6im"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_4t1xl"]
-radius = 0.1
-height = 4.649
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuac1"]
-albedo_color = Color(0, 0.470588, 0.470588, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sapmv"]
-radius = 0.1
-height = 4.649
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ti4u3"]
 size = Vector3(10, 100, 1)
@@ -82,95 +60,30 @@ shader_parameter/cloudStrength = 0.6
 shader_parameter/cloudCutoff = 0.013
 shader_parameter/cloudIntensity = 0.0560005
 
-[sub_resource type="Sky" id="Sky_b4hf1"]
+[sub_resource type="Sky" id="Sky_4kume"]
 sky_material = SubResource("ShaderMaterial_jn3ji")
 radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_wclpa"]
 background_mode = 2
 background_color = Color(0.411765, 0.756863, 0.909804, 1)
-sky = SubResource("Sky_b4hf1")
+sky = SubResource("Sky_4kume")
 ambient_light_source = 3
 
-[sub_resource type="LabelSettings" id="LabelSettings_lvn3e"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6bc6q"]
+light_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_mj0hs"]
 font_size = 50
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [node name="1-3" type="Node3D"]
 
-[node name="InLevelMenu" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchor_right = 0.407
-anchor_bottom = 0.322
-offset_right = 967.6
-offset_bottom = 817.6
-script = ExtResource("1_rx8c3")
-
-[node name="ButMainMenu" type="Button" parent="InLevelMenu"]
-material = SubResource("CanvasItemMaterial_ciymy")
-layout_mode = 2
-offset_left = 209.0
-offset_top = 349.0
-offset_right = 993.0
-offset_bottom = 575.0
-text = "Main Menu"
-
-[node name="ButRestart" type="Button" parent="InLevelMenu"]
-material = SubResource("CanvasItemMaterial_ciymy")
-layout_mode = 2
-offset_left = 203.0
-offset_top = 90.0
-offset_right = 987.0
-offset_bottom = 316.0
-text = "Restart"
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="InLevelMenu"]
-show_behind_parent = true
-light_mask = 5
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -256.0
-offset_top = 8.0
-offset_right = 256.0
-offset_bottom = 520.0
-grow_horizontal = 2
-mouse_filter = 2
-
-[node name="SubViewport" type="SubViewport" parent="InLevelMenu/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 0
-
-[node name="InLevelMenu" type="Label" parent="InLevelMenu/SubViewportContainer/SubViewport"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "You died!"
-label_settings = SubResource("LabelSettings_rfcpf")
-
 [node name="character" parent="." instance=ExtResource("2_x86my")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.5, 0)
 collision_layer = 1
 collision_mask = 1
-
-[node name="directionArrow" type="Node3D" parent="character"]
-
-[node name="ArrowMesh3d" type="MeshInstance3D" parent="character/directionArrow"]
-transform = Transform3D(-2.18557e-08, -0.5, 2.18557e-08, 0, -2.18557e-08, -0.5, 0.5, -2.18557e-08, 9.55343e-16, 1, 0, 0)
-material_override = SubResource("StandardMaterial3D_2r6im")
-mesh = SubResource("CapsuleMesh_4t1xl")
-skeleton = NodePath("../..")
-
-[node name="velocityArrow" type="Node3D" parent="character"]
-
-[node name="ArrowMesh3d" type="MeshInstance3D" parent="character/velocityArrow"]
-transform = Transform3D(-2.18557e-08, -0.5, 0, -2.18557e-08, 9.55343e-16, -0.5, 0.5, -2.18557e-08, -2.18557e-08, 1, 0, 0)
-material_override = SubResource("StandardMaterial3D_wuac1")
-mesh = SubResource("CapsuleMesh_sapmv")
-skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="character"]
 transform = Transform3D(-4.37114e-08, 0.895712, -0.444635, 0, 0.444635, 0.895712, 1, 3.91528e-08, -1.94356e-08, 3.90959, 10, 1.70894e-07)
@@ -180,12 +93,17 @@ size = 35.0
 far = 4263.3
 script = ExtResource("3_h3076")
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="character"]
-light_color = Color(0.0666667, 0.164706, 1, 1)
-light_energy = 0.382
-light_bake_mode = 0
-shadow_bias = 0.0
-omni_range = 18.593
+[node name="CountdownTimer" type="Timer" parent="character"]
+
+[node name="CountdownLabel" type="Label" parent="character"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FPSLabel" type="Label" parent="character"]
+offset_top = 21.0
+offset_right = 40.0
+offset_bottom = 44.0
+script = ExtResource("3_bjg5x")
 
 [node name="Stage" type="Node" parent="."]
 
@@ -323,36 +241,56 @@ shadow_bias = 1.333
 shadow_normal_bias = 3.561
 omni_attenuation = 1.03527
 
-[node name="TimerLabel" type="Control" parent="."]
+[node name="InLevelMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_top = 288.0
-offset_bottom = 651.0
-script = ExtResource("5_s1df7")
+anchor_right = 0.407
+anchor_bottom = 0.322
+offset_right = 967.6
+offset_bottom = 817.6
+script = ExtResource("1_rx8c3")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="TimerLabel"]
+[node name="ButMainMenu" type="Button" parent="InLevelMenu"]
+material = SubResource("CanvasItemMaterial_6bc6q")
+layout_mode = 2
+offset_left = 209.0
+offset_top = 349.0
+offset_right = 993.0
+offset_bottom = 575.0
+text = "Main Menu"
+
+[node name="ButRestart" type="Button" parent="InLevelMenu"]
+material = SubResource("CanvasItemMaterial_6bc6q")
+layout_mode = 2
+offset_left = 203.0
+offset_top = 90.0
+offset_right = 987.0
+offset_bottom = 316.0
+text = "Restart"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InLevelMenu"]
 show_behind_parent = true
 light_mask = 5
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -644.0
-offset_right = 214.0
-offset_bottom = -544.0
-grow_vertical = 0
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 512.0
 mouse_filter = 2
 
-[node name="SubViewport" type="SubViewport" parent="TimerLabel/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="InLevelMenu/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(210, 100)
-render_target_update_mode = 4
+size = Vector2i(1152, 512)
+size_2d_override_stretch = true
+render_target_update_mode = 0
 
-[node name="Timer" type="Label" parent="TimerLabel/SubViewportContainer/SubViewport"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Turns: 0"
-label_settings = SubResource("LabelSettings_lvn3e")
-script = ExtResource("6_5585y")
+[node name="InLevelMenu" type="Label" parent="InLevelMenu/SubViewportContainer/SubViewport"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 72.0
+grow_horizontal = 2
+text = "You died!"
+label_settings = SubResource("LabelSettings_mj0hs")
+horizontal_alignment = 1

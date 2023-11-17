@@ -1,9 +1,9 @@
 extends Camera3D
 
 var target: CharacterBody3D  # The target to follow
-var cameraDistance: float = 10.0
-var cameraHeight: float = 10.0
-var cameraAngle: float = 50.0
+var cameraDistance: float = 6.0
+var cameraHeight: float = 6.0
+var cameraAngle: float = 45.0
 var rotationSpeed: float = 90.0  # Degrees per second
 var lerpSpeed: float = 4.0  # Control how fast the camera moves to the new position
 
@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 		# Smoothly interpolate the camera's position
 		global_transform.origin = global_transform.origin.lerp(desiredPosition, lerpSpeed * delta)
 		look_at(target.global_transform.origin, Vector3.UP)
-
 		handle_input(delta)
 
 func handle_input(delta):

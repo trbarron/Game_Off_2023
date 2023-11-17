@@ -1,0 +1,254 @@
+[gd_scene load_steps=17 format=3 uid="uid://c5xundg41a1vn"]
+
+[ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="1_nyfl5"]
+[ext_resource type="Script" path="res://GoalArea3D.gd" id="2_j1aia"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="2_nj0bt"]
+[ext_resource type="PackedScene" uid="uid://bds8jh6r1afou" path="res://assets/1-4.blend" id="2_wiy52"]
+[ext_resource type="PackedScene" uid="uid://ct8u1exlme44t" path="res://assets/goal.blend" id="3_62jey"]
+[ext_resource type="Script" path="res://FPSLabel.gd" id="3_homcb"]
+[ext_resource type="Script" path="res://DeathArea.gd" id="4_3miom"]
+[ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="5_8ywri"]
+[ext_resource type="Script" path="res://InLevelMenu.gd" id="6_pwvkn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ngjul"]
+size = Vector3(10, 100, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwiag"]
+size = Vector3(1000, 1000, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5veef"]
+shader = ExtResource("5_8ywri")
+shader_parameter/offsetHorizon = -0.374
+shader_parameter/horizonIntensity = 0.337
+shader_parameter/sunSetColor = Color(0.643137, 0.0156863, 0.305882, 1)
+shader_parameter/horizonColorDay = Color(1, 1, 1, 1)
+shader_parameter/horizonColorNight = Color(0.733333, 0.709804, 0.854902, 1)
+shader_parameter/sunColor = Color(1, 1, 1, 1)
+shader_parameter/sunRadius = 0.457
+shader_parameter/flatSun = false
+shader_parameter/moonColor = Color(1, 1, 1, 1)
+shader_parameter/moonRadius = 0.05
+shader_parameter/moonCrescent = -0.024
+shader_parameter/enableHorizonFade = false
+shader_parameter/horizonFadeSize = 2.2
+shader_parameter/horizonFadeBlend = 0.1
+shader_parameter/dayBottomColor = Color(0.4, 1, 1, 1)
+shader_parameter/dayTopColor = Color(0.0862745, 0, 0.278431, 1)
+shader_parameter/nightBottomColor = Color(0.113725, 0.113725, 0.113725, 1)
+shader_parameter/nightTopColor = Color(0.27451, 0.27451, 0.27451, 1)
+shader_parameter/starsSpeed = 0.12
+shader_parameter/starsCutoff = 0.702
+shader_parameter/starsSkyColor = Color(0, 0.11, 0.05, 1)
+shader_parameter/offsetStars = -1.243
+shader_parameter/starsIntensity = -7.247
+shader_parameter/starFalloff = 1.212
+shader_parameter/starsFadeModulation = -0.931
+shader_parameter/cloudEdgeDayColor = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/cloudMainDayColor = Color(1, 1, 1, 1)
+shader_parameter/cloudEdgeNightColor = Color(0.65, 0.79, 0.25, 1)
+shader_parameter/cloudMainNightColor = Color(0.75, 0.76, 0.2, 1)
+shader_parameter/cloudSpeed1 = 1.225
+shader_parameter/cloudSpeed2 = 0.88
+shader_parameter/cloudSpeed3 = 0.02
+shader_parameter/cloudScale1 = 2.165
+shader_parameter/cloudScale2 = 1.509
+shader_parameter/cloudScale3 = 0.075
+shader_parameter/cloudDistortion = 1.95
+shader_parameter/cloudStrength = 1.0
+shader_parameter/cloudCutoff = 0.013
+shader_parameter/cloudIntensity = 0.0560005
+
+[sub_resource type="Sky" id="Sky_b4hf1"]
+sky_material = SubResource("ShaderMaterial_5veef")
+
+[sub_resource type="Environment" id="Environment_un67u"]
+background_mode = 2
+background_color = Color(0.411765, 0.756863, 0.909804, 1)
+sky = SubResource("Sky_b4hf1")
+ambient_light_source = 3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hqyju"]
+light_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_801tf"]
+font_size = 50
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="1-4" type="Node3D"]
+
+[node name="character" parent="." instance=ExtResource("1_nyfl5")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 27.3101, 1.5, 29.1232)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Camera3D" type="Camera3D" parent="character"]
+transform = Transform3D(-0.965926, 0.231827, -0.11508, -6.58301e-16, 0.444635, 0.895712, 0.258819, 0.865191, -0.429485, -73.0078, 3.24773, -4.04553)
+projection = 1
+fov = 101.3
+size = 35.0
+far = 4263.3
+script = ExtResource("2_nj0bt")
+
+[node name="CountdownTimer" type="Timer" parent="character"]
+
+[node name="CountdownLabel" type="Label" parent="character"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "alskdfjaslkdfj"
+
+[node name="FPSLabel" type="Label" parent="character"]
+offset_top = 21.0
+offset_right = 40.0
+offset_bottom = 44.0
+script = ExtResource("3_homcb")
+
+[node name="Stage" type="Node" parent="."]
+
+[node name="1-4" parent="Stage" instance=ExtResource("2_wiy52")]
+transform = Transform3D(0.776457, 0, -2.89778, 0, 3, 0, 2.89778, 0, 0.776457, 25.2254, 0.63158, 31.4925)
+
+[node name="GoalArea" type="Area3D" parent="."]
+transform = Transform3D(0.872803, 0, -0.488073, 0, 1, 0, 0.488073, 0, 0.872803, -4.62639, -3.24917, 67.6937)
+script = ExtResource("2_j1aia")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalArea"]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -44.9406, 2.38419e-07, -4.71388)
+shape = SubResource("BoxShape3D_ngjul")
+
+[node name="goal" parent="GoalArea" instance=ExtResource("3_62jey")]
+transform = Transform3D(-0.0139854, 0, 1.45868, 0, 0.865, 0, -0.0583474, 0, -0.349634, -47.1637, 2.44965, -3.69478)
+
+[node name="DeathArea" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.97642, -19.5817, 0)
+script = ExtResource("4_3miom")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -1.82099)
+shape = SubResource("BoxShape3D_ngjul")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -33.076)
+shape = SubResource("BoxShape3D_bwiag")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_un67u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -56.3471, 36.8026, 0)
+light_energy = 0.102
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.0149934, 0.258384, -0.965926, -0.998321, -0.0579299, -9.31502e-10, -0.055956, 0.964304, 0.258819, 16.3619, 11.5473, 23.6834)
+light_color = Color(0.588235, 1, 1, 1)
+light_energy = 16.0
+light_indirect_energy = 12.091
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 20.626
+omni_attenuation = 1.86607
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -14.6987, 1.87075, 41.1634)
+light_energy = 16.0
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 34.712
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -10.6617, 12.2649, 32.0364)
+light_color = Color(0.0862745, 0.329412, 0.709804, 1)
+light_energy = 8.741
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 96.406
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.258819, -0.00738399, -0.965898, 0, 0.999971, -0.00764447, 0.965926, 0.00197853, 0.258812, 4.45808, 19.3856, 34.1956)
+light_color = Color(0.72549, 0.639216, 1, 1)
+light_energy = 16.0
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 0.0
+omni_range = 34.712
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 23.6404, 8.43243, 29.0213)
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 1.333
+shadow_normal_bias = 3.561
+omni_attenuation = 1.03527
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -44.3164, -3.95738, 19.7614)
+light_indirect_energy = 5.364
+light_size = 0.477
+light_specular = 16.0
+shadow_bias = 1.333
+shadow_normal_bias = 3.561
+omni_attenuation = 1.03527
+
+[node name="InLevelMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_right = 0.407
+anchor_bottom = 0.322
+offset_right = 967.6
+offset_bottom = 817.6
+script = ExtResource("6_pwvkn")
+
+[node name="ButMainMenu" type="Button" parent="InLevelMenu"]
+material = SubResource("CanvasItemMaterial_hqyju")
+layout_mode = 2
+offset_left = 209.0
+offset_top = 349.0
+offset_right = 993.0
+offset_bottom = 575.0
+text = "Main Menu"
+
+[node name="ButRestart" type="Button" parent="InLevelMenu"]
+material = SubResource("CanvasItemMaterial_hqyju")
+layout_mode = 2
+offset_left = 203.0
+offset_top = 90.0
+offset_right = 987.0
+offset_bottom = 316.0
+text = "Restart"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InLevelMenu"]
+show_behind_parent = true
+light_mask = 5
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 512.0
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="InLevelMenu/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 512)
+size_2d_override_stretch = true
+render_target_update_mode = 0
+
+[node name="InLevelMenu" type="Label" parent="InLevelMenu/SubViewportContainer/SubViewport"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 72.0
+grow_horizontal = 2
+text = "You died!"
+label_settings = SubResource("LabelSettings_801tf")
+horizontal_alignment = 1

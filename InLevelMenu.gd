@@ -17,21 +17,24 @@ func _on_character_died():
 	show()
 
 func _on_character_won():
-	var character_turns = characterNode.turns
-	inLevelMenu.text = "You won in " + str(character_turns + 1) + " turns!"
+	var charTime = characterNode.time
+	inLevelMenu.text = "You won in " + str(round(charTime * 100.0) / 100.0) + " seconds!"
 	show()
 
 func _on_Restart_pressed():
-	get_tree().change_scene_to_file("res://main_menu_scene.tscn")
+	var current_scene_name = get_tree().current_scene.name
+	get_tree().change_scene_to_file("res://" + current_scene_name + ".tscn")
 	
 func _on_MainMenu_pressed():
 	get_tree().change_scene_to_file("res://main_menu_scene.tscn")
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_ESCAPE:
+		if event.keycode == KEY_ESCAPE or event.keycode == KEY_P:
 			inLevelMenu.text = "Pause"
 			if !self.is_visible():
 				show()
+				characterNode.startAction = false
 			else:
 				hide()
+				characterNode.startAction = true

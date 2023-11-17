@@ -13,7 +13,10 @@ config_version=5
 config/name="Basic3dStarter"
 run/main_scene="res://main_menu_scene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://Globals.gd"
 
 [display]
 
