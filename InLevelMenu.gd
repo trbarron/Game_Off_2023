@@ -2,6 +2,7 @@ extends Control
 
 @onready var inLevelMenu = $SubViewportContainer/SubViewport/InLevelMenu
 @onready var characterNode = get_node("../character")
+@onready var bronzeMedal = $BronzeMedal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +20,24 @@ func _on_character_died():
 func _on_character_won():
 	var charTime = characterNode.time
 	inLevelMenu.text = "You won in " + str(round(charTime * 100.0) / 100.0) + " seconds!"
+	inLevelMenu.text = inLevelMenu.text + "\n" 
 	show()
+	
+	var current_scene_name = get_tree().current_scene.name
+	var currStageName = current_scene_name.split("-")[1]
+	
+	if charTime < Globals.stageMedalTimes[currStageName].author:
+		var author = true
+	elif charTime < Globals.stageMedalTimes[currStageName].gold:
+		var gold = true
+	elif charTime < Globals.stageMedalTimes[currStageName].silver:
+		var silver = true
+	elif charTime < Globals.stageMedalTimes[currStageName].bronze:
+		bronzeMedal.show()
+	var none = true
+	
+func hideMedals():
+	bronzeMedal.hide()
 
 func _on_Restart_pressed():
 	var current_scene_name = get_tree().current_scene.name
@@ -38,3 +56,4 @@ func _input(event):
 			else:
 				hide()
 				characterNode.startAction = true
+				hideMedals()

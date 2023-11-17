@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dthnxlvp0igw"]
+[gd_scene load_steps=7 format=3 uid="uid://dthnxlvp0igw"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_40osy"]
-[ext_resource type="Texture2D" uid="uid://cggjs3bkxrh5x" path="res://assets/spheroidZero.png" id="2_diaie"]
+[ext_resource type="Texture2D" uid="uid://dw6rbvmtlpilo" path="res://assets/spheroidZero.png" id="2_diaie"]
 [ext_resource type="Script" path="res://UsernameScript.gd" id="2_fxvbm"]
+[ext_resource type="Texture2D" uid="uid://bj6wq5wexkj85" path="res://assets/spheroidTexture.png" id="4_kyxdx"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7252j"]
 
@@ -46,6 +47,7 @@ text = "1-3"
 
 [node name="But14" type="Button" parent="."]
 material = SubResource("CanvasItemMaterial_xol22")
+layout_mode = 0
 offset_left = 587.0
 offset_top = 436.0
 offset_right = 1137.0
@@ -84,3 +86,17 @@ offset_right = 1152.0
 offset_bottom = 653.0
 mouse_filter = 2
 color = Color(0.780392, 0.780392, 0.780392, 1)
+
+[node name="OneBronze" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(526, 387)
+scale = Vector2(0.123047, 0.0996094)
+texture = ExtResource("4_kyxdx")
+
+[node name="ButHS" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_xol22")
+offset_left = 775.0
+offset_top = 574.0
+offset_right = 1140.0
+offset_bottom = 636.0
+text = "High Scores"

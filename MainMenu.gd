@@ -6,6 +6,8 @@ func _ready():
 	$But12.connect("pressed", Callable(self, "_on_12_pressed"))
 	$But13.connect("pressed", Callable(self, "_on_13_pressed"))
 	$But14.connect("pressed", Callable(self, "_on_14_pressed"))
+	$ButHS.connect("pressed", Callable(self, "_on_HS_pressed"))
+	showMedals()
 
 func _on_11_pressed():
 	get_tree().change_scene_to_file("res://1-1.tscn")
@@ -15,10 +17,19 @@ func _on_12_pressed():
 
 func _on_13_pressed():
 	get_tree().change_scene_to_file("res://1-3.tscn")
+	
 func _on_14_pressed():
 	get_tree().change_scene_to_file("res://1-4.tscn")
 
+func _on_HS_pressed():
+	get_tree().change_scene_to_file("res://high_scores.tscn")
 
 func _on_QuitButton_pressed():
 	# Quit the game.
 	get_tree().quit()
+
+func showMedals():
+	# Stage 1
+	if Globals.medals["1"] > 0:
+		$OneBronze.show()
+	

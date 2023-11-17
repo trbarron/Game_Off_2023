@@ -1,14 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://td8ncx4e224w"]
+[gd_scene load_steps=18 format=3 uid="uid://td8ncx4e224w"]
 
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="2_7bd7c"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_kcstb"]
 [ext_resource type="Script" path="res://FPSLabel.gd" id="3_aplfa"]
-[ext_resource type="PackedScene" uid="uid://b8pfl3bu7f5go" path="res://assets/halfpipe.blend" id="3_uensq"]
-[ext_resource type="PackedScene" uid="uid://c0n5inifokeg2" path="res://assets/turn.blend" id="4_gfobj"]
+[ext_resource type="PackedScene" uid="uid://bgb44x5od7fxi" path="res://assets/halfpipe.blend" id="3_uensq"]
+[ext_resource type="PackedScene" uid="uid://sqojpi2vin3u" path="res://assets/turn.blend" id="4_gfobj"]
 [ext_resource type="Script" path="res://GoalArea3D.gd" id="6_c7ydv"]
-[ext_resource type="PackedScene" uid="uid://ct8u1exlme44t" path="res://assets/goal.blend" id="6_wb43l"]
+[ext_resource type="PackedScene" uid="uid://gqim5mrfjjiu" path="res://assets/goal.blend" id="6_wb43l"]
 [ext_resource type="Script" path="res://DeathArea.gd" id="8_ngecs"]
 [ext_resource type="Script" path="res://InLevelMenu.gd" id="10_hi6st"]
+[ext_resource type="Texture2D" uid="uid://bj6wq5wexkj85" path="res://assets/spheroidTexture.png" id="11_cpbdo"]
 [ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="11_ea7t5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2o2ka"]
@@ -194,26 +195,27 @@ visible = false
 layout_mode = 3
 anchor_right = 0.407
 anchor_bottom = 0.322
+offset_top = -1.0
 offset_right = 967.6
-offset_bottom = 817.6
+offset_bottom = 816.6
 script = ExtResource("10_hi6st")
 
 [node name="ButMainMenu" type="Button" parent="InLevelMenu"]
 material = SubResource("CanvasItemMaterial_ot34w")
 layout_mode = 2
 offset_left = 209.0
-offset_top = 349.0
+offset_top = 500.0
 offset_right = 993.0
-offset_bottom = 575.0
+offset_bottom = 600.0
 text = "Main Menu"
 
 [node name="ButRestart" type="Button" parent="InLevelMenu"]
 material = SubResource("CanvasItemMaterial_ot34w")
 layout_mode = 2
-offset_left = 203.0
-offset_top = 90.0
-offset_right = 987.0
-offset_bottom = 316.0
+offset_left = 209.0
+offset_top = 390.0
+offset_right = 993.0
+offset_bottom = 490.0
 text = "Restart"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="InLevelMenu"]
@@ -242,3 +244,9 @@ grow_horizontal = 2
 text = "You died!"
 label_settings = SubResource("LabelSettings_cvykg")
 horizontal_alignment = 1
+
+[node name="BronzeMedal" type="Sprite2D" parent="InLevelMenu"]
+visible = false
+position = Vector2(595, 208)
+scale = Vector2(0.335938, 0.335938)
+texture = ExtResource("11_cpbdo")

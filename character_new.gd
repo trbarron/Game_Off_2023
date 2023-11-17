@@ -16,6 +16,8 @@ var time = 0
 @onready var sphereMesh = $CSGMesh3D
 @onready var postScoreRequest = $postScoreHTTPRequest
 
+@onready var bronzeMedal = $BronzeMedal
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var deathArea = get_node("../DeathArea")
@@ -28,12 +30,11 @@ func _ready():
 	var goalArea = get_node("../GoalArea")
 	goalArea.connect("character_won", Callable(self, "_on_character_won"))
 
-
 func start_countdown():
 	countdown = 3
 	countdownLabel.text = str(countdown)
 	countdownTimer.start()
-	set_process(false)  # Disable other processes during countdown
+	set_process(false)
 
 func _on_CountdownTimer_timeout():
 	countdown -= 1
@@ -50,14 +51,47 @@ func _on_character_died():
 
 func _on_character_won():
 	startAction = false
+	postScore()
+	checkMedals()
+	
+
+func checkMedals():
+	var current_scene_name = get_tree().current_scene.name
+	var currStageName = current_scene_name.split("-")[1]
+	
+	var currStageMedals = Globals.stageMedalTimes[currStageName]
+	
+	if time < currStageMedals.author:
+		setMedalResponse("author", 0)
+	elif time < currStageMedals.gold:
+		setMedalResponse("gold", currStageMedals.author)
+	elif time < currStageMedals.silver:
+		setMedalResponse("silver", currStageMedals.gold)
+	elif time < currStageMedals.bronze:
+		setMedalResponse("bronze", currStageMedals.silver)
+	else: setMedalResponse("none", Globals.stageMedalTimes[currStageName].bronze)
+
+func setMedalResponse(medal, nextTime):
+	var current_scene_name = get_tree().current_scene.name
+	var currStageName = current_scene_name.split("-")[1]
+	var medalRankings = {
+		"none": 0,
+		"bronze": 1,
+		"silver": 2,
+		"gold": 3,
+		"author": 4 
+	}
+	var achievedMedal = medalRankings[medal]
+	if Globals.medals[currStageName] < achievedMedal:
+		Globals.medals[currStageName] = achievedMedal
+
+func postScore():
 	
 	# Define the base URL without query parameters
 	var base_url = "https://qse3b041vg.execute-api.us-west-2.amazonaws.com/stage1/sz/postScore"
 
-
 	var current_scene_name = get_tree().current_scene.name
 	var currStageName = current_scene_name.split("-")[1]
-	
 	
 	# Define the query parameters as a Dictionary
 	var query_parameters = {
@@ -77,25 +111,13 @@ func _on_character_won():
 	# Construct the final URL with query parameters
 	var final_url = base_url + query_string
 	
-	print(final_url)
-	
 	# Prepare the HTTP request
 	postScoreRequest.request(
 		final_url,
-		[],  # Custom headers (if any)
-		false,  # Use ssl (true for https)
+		[],
+		false,
 		"POST"
 	)
-
-# Callback when request is completed
-# Callback when request is completed
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-	var parser = JSON.new()
-	var response = parser.parse(body.get_string_from_utf8())
-	if response.error == OK:
-		print("Response: ", response.result)
-	else:
-		print("Error parsing JSON")
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -121,9 +143,6 @@ func _physics_process(delta):
 		if rollingDirection != Vector3.ZERO:
 			var force = rollingDirection * HORIZONTAL_ACCELERATION
 			velocity += force * delta
-
-		# velocity.x *= FRICTION
-		# velocity.z *= FRICTION
 
 		var horizontalSpeed = Vector2(velocity.x, velocity.z)
 		
