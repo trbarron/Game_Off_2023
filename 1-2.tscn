@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ck4i8kpv510ck"]
+[gd_scene load_steps=25 format=3 uid="uid://ck4i8kpv510ck"]
 
 [ext_resource type="Script" path="res://InLevelMenu.gd" id="1_xlyaw"]
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="2_wdqh7"]
@@ -6,10 +6,21 @@
 [ext_resource type="Script" path="res://FPSLabel.gd" id="3_rsihn"]
 [ext_resource type="PackedScene" uid="uid://bmxdpgk6rov0v" path="res://assets/cylinder.blend" id="4_08yab"]
 [ext_resource type="PackedScene" uid="uid://b8pfl3bu7f5go" path="res://assets/halfpipe.blend" id="4_m7m16"]
+[ext_resource type="Texture2D" uid="uid://dhreoi1315btm" path="res://assets/CountDown.png" id="5_el1ac"]
 [ext_resource type="Script" path="res://GoalArea3D.gd" id="8_r123h"]
 [ext_resource type="PackedScene" uid="uid://ct8u1exlme44t" path="res://assets/goal.blend" id="9_7f5tx"]
 [ext_resource type="Script" path="res://DeathArea.gd" id="10_axu4s"]
 [ext_resource type="Shader" path="res://main_menu_scene.gdshader" id="11_5frbk"]
+[ext_resource type="Texture2D" uid="uid://6gqdjukgyjkv" path="res://assets/medalA.png" id="11_f8di0"]
+[ext_resource type="Texture2D" uid="uid://v8x0e03yvto1" path="res://assets/buttonBackground.png" id="11_tqvfg"]
+[ext_resource type="FontFile" uid="uid://d0wyubj121klo" path="res://assets/Octopus Game.ttf" id="12_h5ara"]
+[ext_resource type="Texture2D" uid="uid://dwur8n3yn0cgm" path="res://assets/medalB.png" id="12_wpt1t"]
+[ext_resource type="Texture2D" uid="uid://djlqwhgwnx8e4" path="res://assets/medalG.png" id="13_a61mf"]
+[ext_resource type="Texture2D" uid="uid://colge5bufliqa" path="res://assets/medals.png" id="14_spuek"]
+
+[sub_resource type="Theme" id="Theme_6l26t"]
+default_font = ExtResource("12_h5ara")
+default_font_size = 20
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2o2ka"]
 size = Vector3(199, 100, 1)
@@ -68,10 +79,9 @@ ambient_light_source = 3
 ambient_light_sky_contribution = 0.84
 ambient_light_energy = 10.41
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_setrp"]
-light_mode = 1
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6lovy"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_plyvx"]
+[sub_resource type="LabelSettings" id="LabelSettings_3fgi2"]
 font_size = 50
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
@@ -94,15 +104,51 @@ script = ExtResource("3_884al")
 [node name="CountdownTimer" type="Timer" parent="character"]
 
 [node name="CountdownLabel" type="Label" parent="character"]
+offset_top = 5.0
 offset_right = 40.0
-offset_bottom = 23.0
-text = "alskdfjaslkdfj"
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("12_h5ara")
 
 [node name="FPSLabel" type="Label" parent="character"]
-offset_top = 21.0
+offset_top = 26.0
 offset_right = 40.0
-offset_bottom = 44.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("12_h5ara")
 script = ExtResource("3_rsihn")
+
+[node name="ControlsLabel" type="Label" parent="character"]
+offset_left = 5.0
+offset_top = 563.0
+offset_right = 381.0
+offset_bottom = 699.0
+theme = SubResource("Theme_6l26t")
+theme_override_constants/line_spacing = 0
+text = "Mouse - Ball Movement
+[R] - Restart
+[P] - Pause
+[A / S] - Camera Movement"
+
+[node name="CountDownBg" type="Sprite2D" parent="character"]
+position = Vector2(574, 112)
+scale = Vector2(0.751852, 0.751852)
+texture = ExtResource("5_el1ac")
+
+[node name="CountDownLabelInner" type="Label" parent="character/CountDownBg"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.091
+offset_top = -197.512
+offset_right = -159.091
+offset_bottom = -63.5123
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("12_h5ara")
+theme_override_font_sizes/font_size = 130
+text = "3"
 
 [node name="Stage" type="Node" parent="."]
 
@@ -171,27 +217,80 @@ visible = false
 layout_mode = 3
 anchor_right = 0.407
 anchor_bottom = 0.322
+offset_top = -1.0
 offset_right = 967.6
-offset_bottom = 817.6
+offset_bottom = 816.6
 script = ExtResource("1_xlyaw")
 
 [node name="ButMainMenu" type="Button" parent="InLevelMenu"]
-material = SubResource("CanvasItemMaterial_setrp")
-layout_mode = 2
-offset_left = 209.0
-offset_top = 349.0
-offset_right = 993.0
-offset_bottom = 575.0
+clip_children = 1
+layout_mode = 0
+offset_left = 310.0
+offset_top = 470.0
+offset_right = 860.0
+offset_bottom = 570.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6lovy")
+
+[node name="ButtonBackground" type="Sprite2D" parent="InLevelMenu/ButMainMenu"]
+position = Vector2(276, 45)
+texture = ExtResource("11_tqvfg")
+
+[node name="LevelLabel" type="Label" parent="InLevelMenu/ButMainMenu"]
+z_index = 1
+layout_mode = 0
+offset_left = 90.0
+offset_top = 32.0
+offset_right = 490.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_h5ara")
+theme_override_font_sizes/font_size = 38
 text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="InLevelMenu/ButMainMenu"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 28.0
+offset_right = 444.0
+offset_bottom = 69.0
+mouse_filter = 2
+color = Color(0.0431373, 0.152941, 0.168627, 1)
 
 [node name="ButRestart" type="Button" parent="InLevelMenu"]
-material = SubResource("CanvasItemMaterial_setrp")
-layout_mode = 2
-offset_left = 203.0
-offset_top = 90.0
-offset_right = 987.0
-offset_bottom = 316.0
+clip_children = 1
+layout_mode = 0
+offset_left = 310.0
+offset_top = 355.0
+offset_right = 860.0
+offset_bottom = 455.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6lovy")
+
+[node name="ButtonBackground" type="Sprite2D" parent="InLevelMenu/ButRestart"]
+position = Vector2(276, 45)
+texture = ExtResource("11_tqvfg")
+
+[node name="LevelLabel" type="Label" parent="InLevelMenu/ButRestart"]
+z_index = 1
+layout_mode = 0
+offset_left = 90.0
+offset_top = 32.0
+offset_right = 490.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_h5ara")
+theme_override_font_sizes/font_size = 38
 text = "Restart"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="InLevelMenu/ButRestart"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 28.0
+offset_right = 424.0
+offset_bottom = 69.0
+mouse_filter = 2
+color = Color(0.0431373, 0.152941, 0.168627, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="InLevelMenu"]
 show_behind_parent = true
@@ -213,9 +312,38 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -576.0
+offset_top = 70.0
 offset_right = 576.0
-offset_bottom = 72.0
+offset_bottom = 142.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("12_h5ara")
 text = "You died!"
-label_settings = SubResource("LabelSettings_plyvx")
+label_settings = SubResource("LabelSettings_3fgi2")
 horizontal_alignment = 1
+
+[node name="MedalA" type="Sprite2D" parent="InLevelMenu"]
+visible = false
+z_index = 3
+position = Vector2(715, 250)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_f8di0")
+
+[node name="MedalB" type="Sprite2D" parent="InLevelMenu"]
+visible = false
+position = Vector2(476, 250)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_wpt1t")
+
+[node name="MedalG" type="Sprite2D" parent="InLevelMenu"]
+visible = false
+z_index = 2
+position = Vector2(636, 250)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_a61mf")
+
+[node name="MedalS" type="Sprite2D" parent="InLevelMenu"]
+visible = false
+z_index = 1
+position = Vector2(548, 250)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_spuek")

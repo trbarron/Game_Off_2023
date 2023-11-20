@@ -30,6 +30,25 @@ func _on_QuitButton_pressed():
 
 func showMedals():
 	# Stage 1
-	if Globals.medals["1"] > 0:
-		$OneBronze.show()
+	if Globals.medals["1"] > 0: $OneMedalB.show()
+	if Globals.medals["1"] > 1: $OneMedalS.show()
+	if Globals.medals["1"] > 2: $OneMedalG.show()
+	if Globals.medals["1"] > 3: $OneMedalA.show()
 	
+	# Stage 2
+	if Globals.medals["2"] > 0: $TwoMedalB.show()
+	if Globals.medals["2"] > 1: $TwoMedalS.show()
+	if Globals.medals["2"] > 2: $TwoMedalG.show()
+	if Globals.medals["2"] > 3: $TwoMedalA.show()
+	
+	# Stage 3
+	if Globals.medals["3"] > 0: $ThreeMedalB.show()
+	if Globals.medals["3"] > 1: $ThreeMedalS.show()
+	if Globals.medals["3"] > 2: $ThreeMedalG.show()
+	if Globals.medals["3"] > 3: $ThreeMedalA.show()
+	
+	# Stage 4
+	if Globals.medals["4"] > 0: $FourMedalB.show()
+	if Globals.medals["4"] > 1: $FourMedalS.show()
+	if Globals.medals["4"] > 2: $FourMedalG.show()
+	if Globals.medals["4"] > 3: $FourMedalA.show()

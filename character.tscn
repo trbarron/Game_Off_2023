@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://doh0w0if3r85g"]
 
 [ext_resource type="Script" path="res://character_new.gd" id="1_7egtf"]
-[ext_resource type="Texture2D" uid="uid://2fydg5srni4x" path="res://assets/spheroidTexture2.png" id="2_udn21"]
-[ext_resource type="Texture2D" uid="uid://dpxn1fl3vpat7" path="res://assets/spheroidNormalMap.png" id="2_wbd2k"]
+[ext_resource type="Texture2D" uid="uid://pnftxk6vurcp" path="res://assets/spheroidTexture2.png" id="2_udn21"]
+[ext_resource type="Texture2D" uid="uid://mfcajj5nbnsx" path="res://assets/spheroidNormalMap.png" id="2_wbd2k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nb61p"]
 

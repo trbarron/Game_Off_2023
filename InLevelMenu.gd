@@ -2,7 +2,10 @@ extends Control
 
 @onready var inLevelMenu = $SubViewportContainer/SubViewport/InLevelMenu
 @onready var characterNode = get_node("../character")
-@onready var bronzeMedal = $BronzeMedal
+@onready var bronzeMedal = $MedalB
+@onready var silverMedal = $MedalS
+@onready var goldMedal = $MedalG
+@onready var authorMedal = $MedalA
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,17 +30,25 @@ func _on_character_won():
 	var currStageName = current_scene_name.split("-")[1]
 	
 	if charTime < Globals.stageMedalTimes[currStageName].author:
-		var author = true
+		authorMedal.show()
+		goldMedal.show()
+		silverMedal.show()
+		bronzeMedal.show()
 	elif charTime < Globals.stageMedalTimes[currStageName].gold:
-		var gold = true
+		goldMedal.show()
+		silverMedal.show()
+		bronzeMedal.show()
 	elif charTime < Globals.stageMedalTimes[currStageName].silver:
-		var silver = true
+		silverMedal.show()
+		bronzeMedal.show()
 	elif charTime < Globals.stageMedalTimes[currStageName].bronze:
 		bronzeMedal.show()
-	var none = true
 	
 func hideMedals():
 	bronzeMedal.hide()
+	silverMedal.hide()
+	goldMedal.hide()
+	authorMedal.hide()
 
 func _on_Restart_pressed():
 	var current_scene_name = get_tree().current_scene.name
@@ -57,3 +68,6 @@ func _input(event):
 				hide()
 				characterNode.startAction = true
 				hideMedals()
+		if event.keycode == KEY_R:
+			var current_scene_name = get_tree().current_scene.name
+			get_tree().change_scene_to_file("res://" + current_scene_name + ".tscn")

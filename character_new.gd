@@ -16,8 +16,6 @@ var time = 0
 @onready var sphereMesh = $CSGMesh3D
 @onready var postScoreRequest = $postScoreHTTPRequest
 
-@onready var bronzeMedal = $BronzeMedal
-
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var deathArea = get_node("../DeathArea")
@@ -40,8 +38,10 @@ func _on_CountdownTimer_timeout():
 	countdown -= 1
 	if countdown > 0:
 		countdownLabel.text = str(countdown)
+		$CountDownBg/CountDownLabelInner.text = str(countdown)
 	else:
 		countdownLabel.text = ""
+		$CountDownBg.hide()
 		countdownTimer.stop()
 		set_process(true)
 		startAction = true
@@ -108,16 +108,12 @@ func postScore():
 	# Remove the trailing "&" from the query string
 	query_string = query_string.substr(0, query_string.length() - 1)
 
-	# Construct the final URL with query parameters
 	var final_url = base_url + query_string
 	
+	print(final_url)
+	
 	# Prepare the HTTP request
-	postScoreRequest.request(
-		final_url,
-		[],
-		false,
-		"POST"
-	)
+	postScoreRequest.request(final_url)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
